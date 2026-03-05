@@ -139,8 +139,8 @@ about to face.
    mkdir -p "Project-Name/references"
 
    # Search by artist name + title
-   curl -s "https://api.artsearch.io/artworks?query=Artist+Name+Title&number=5&api-key=9c6bc624012f431e889d2844e1e6a4c8" \
-     -H "x-api-key: 9c6bc624012f431e889d2844e1e6a4c8"
+   curl -s "https://api.artsearch.io/artworks?query=Artist+Name+Title&number=5&api-key=$ARTSEARCH_API_KEY" \
+     -H "x-api-key: $ARTSEARCH_API_KEY"
    ```
 
    The API returns JSON with `artworks[]`, each containing `id`, `title`, and `image` (direct JPEG URL).

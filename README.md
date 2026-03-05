@@ -87,6 +87,46 @@ The output is a self-contained HTML file using p5.js that renders the artwork in
 
 ---
 
+## Output Examples
+
+Artworks created entirely by an AI agent using this environment — no image generation models, no diffusion, no GANs. Pure algorithmic painting through the five-phase pipeline.
+
+<p align="center">
+  <img src="examples/bluetrain.png" width="700" alt="The Blue Train — Abstract Expressionism" />
+</p>
+<p align="center">
+  <strong>The Blue Train</strong> — Abstract Expressionism<br/>
+  <em>Deep Prussian blue field with luminous signal points and sweeping calligraphic gestures. Oil glazes built in transparent layers over a dark ground, with linen weave visible through thin passages.</em>
+</p>
+
+<br/>
+
+<p align="center">
+  <img src="examples/threshold_of_the_vast_v8_S3.png" width="400" alt="Threshold of the Vast — Lyrical Abstraction" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="examples/leila.png" width="400" alt="Leila — Abstract" />
+</p>
+<p align="center">
+  <strong>Threshold of the Vast</strong> — Lyrical Abstraction
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Leila</strong> — Abstract
+</p>
+
+<br/>
+
+<p align="center">
+  <img src="examples/palimpsest_v9_S3_2160x2880.png" width="400" alt="After Everyone — Brutalism" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="examples/monday-breakfast.png" width="400" alt="Monday Breakfast — Cubism" />
+</p>
+<p align="center">
+  <strong>After Everyone</strong> — Brutalism
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Monday Breakfast</strong> — Cubism
+</p>
+
+---
+
 ## The Philosophy
 
 ### Physicality over aesthetics
