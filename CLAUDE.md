@@ -15,11 +15,12 @@ The ultimate test for any output: **could this be a photograph of a real artwork
 The pipeline:
 
 ```
-Phase 1: Vision Spec        (art-masterpiece-designer skill)
-Phase 2: Technique Palette   (technique-guide skill)
-Phase 3: Notebook Prototyping (isolated technique calibration)
-Phase 4: Composition          (layer-based material interaction)
-Phase 5: Iteration            (visual feedback loop with the user)
+Phase 1:   Vision Spec             (art-masterpiece-designer skill)
+Phase 2:   Technique Palette       (technique-guide skill)
+Phase 2.5: Deep Technique Research (art-historical + computational research)
+Phase 3:   Notebook Prototyping    (isolated technique calibration)
+Phase 4:   Composition             (layer-based material interaction)
+Phase 5:   Iteration               (visual feedback loop with the user)
 ```
 
 Each phase feeds into the next. **Skip none of them. Execute them in order.**
@@ -125,6 +126,62 @@ The technique-guide is a starting point. The notebooks and composition process a
 
 ---
 
+## Phase 2.5: Deep Technique Research
+
+**THIS PHASE IS MANDATORY. DO NOT SKIP IT.**
+
+The technique-guide gives you algorithmic primitives. But algorithmic primitives alone produce naive implementations — the digital equivalent of "I read a recipe, so I'm a chef." To produce gallery-quality work, you need to understand how the real masters actually executed the technique, and what computational approaches exist for recreating it. This phase closes that gap.
+
+**First action:** Launch two parallel research agents (background agents via the Agent tool). Both can run simultaneously — they have no dependency on each other.
+
+### Track A — Art-Historical Research
+
+Use web search to build deep understanding of how the technique was actually practiced by its masters. This is not casual browsing — it is targeted research with specific deliverables.
+
+**Mandatory research targets:**
+1. **Conservation analysis and close-up photography** of master works in this technique. Search for museum conservation studies, high-resolution detail shots, and macro photography. These reveal what the technique *actually looks like* at mark level — not what art history textbooks say it looks like.
+2. **Published studio process descriptions** by original practitioners or their contemporaries. How did the master actually work? What was their process order? What tools did they use? What did they consider important?
+3. **Common misconceptions** about the technique. What do people *think* it looks like vs. what it actually looks like? (Example: people think Pointillism is "lots of colorful dots" — Seurat actually used 5 categories of marks with specific chromatic roles, applied in systematic layers.)
+
+**Mandatory questions to answer:**
+- What is the actual **mark shape, size, and density** in the master works? (Not what you assume — what does the close-up photography show?)
+- What is the **placement logic**? Random? Systematic? Following form? Following light?
+- How are **light and shadow** handled? (Not through mark color alone — through mark density, size, spacing, layering?)
+- What is **underneath the marks**? (Ground color? Underpainting? Bare surface?)
+- What are the **characteristic "tells"** that distinguish expert execution from amateur attempts?
+- What are 3+ ways the **master technique differs from a naive implementation**?
+
+**Deliverables:**
+- Download at minimum **3 high-resolution close-up images** of master works to `references/`. These must be detail/macro shots showing individual marks, not overview compositions. Name them clearly: `artist_name_-_title_-_detail.jpg`.
+- Write findings in `technique_research.md` at the project root, organized by the questions above.
+
+### Track B — Computational State-of-the-Art
+
+Use web search to find how others have computationally recreated this technique. You are not the first person to attempt this — learn from existing work.
+
+**Research targets:**
+1. **Academic papers** on computational recreation of this technique (search: "[technique name] computational", "[technique name] algorithm", "[technique name] NPR non-photorealistic rendering")
+2. **Open-source implementations** (search GitHub, Observable, CodePen, ShaderToy for "[technique name]")
+3. **Key algorithmic insights** — what did the best implementations discover that naive approaches miss?
+
+**Deliverables:**
+- Document at least **2 algorithmic approaches** with their key insights in `technique_research.md`
+- For each approach, note: what it gets right, what it gets wrong, and what insight you can borrow
+
+### Gate: Before moving to Phase 3
+
+**Do not begin notebook prototyping until you have:**
+
+- [ ] `technique_research.md` exists at the project root with all mandatory questions answered
+- [ ] 3+ close-up reference images of master works downloaded to `references/`
+- [ ] 2+ computational approaches documented with key insights
+- [ ] You can articulate 3+ specific ways the master technique differs from a naive implementation
+- [ ] Research agents have completed and you have reviewed their findings
+
+If you skip this phase, you will build naive implementations, grade them generously, and the user will have to tell you "your technique is really far from the references." Save everyone the time — do the research now.
+
+---
+
 ## Phase 3: Notebook Prototyping
 
 **THIS PHASE IS MANDATORY. DO NOT SKIP IT.**
@@ -168,6 +225,23 @@ Each notebook should:
 
 7. **Verify physicality.** Look at the notebook render and ask: does this look like it was made with real materials? Or does it look like a computer graphic? If the technique is supposed to be oil paint, does it feel like oil paint — with thickness, transparency variation, brush marks? If it's supposed to be torn paper, do the edges look torn — irregular, fibrous, with visible paper layers? If a technique looks "digital" in the notebook, it will look digital in the composition too. Fix it here, where iteration is cheap.
 
+8. **Compare against reference close-ups (mandatory).** After each notebook renders, open it alongside the closest reference close-up from `references/` (the detail images downloaded in Phase 2.5). This is not a vague impression check — write down **3+ specific visual differences** between your render and the reference. For each difference, classify it as:
+   - **(a) Acceptable artistic choice** — you're deliberately diverging from the reference for a good reason
+   - **(b) Technical limitation** — you understand the gap but it's not feasible to close it
+   - **(c) Problem to fix** — your implementation is wrong or naive compared to the reference
+
+   **No (c) items may remain unresolved.** If your dots are 3× too large, if your mark placement is random when the reference shows systematic placement, if your color mixing is additive when the technique is subtractive — these are (c) items. Fix them before accepting the notebook.
+
+### Target image decision gate
+
+After building the first notebook for the primary technique, ask this question: **Is this a *decomposition* technique** — one that breaks a coherent image into discrete marks (pointillism, mosaic, halftone, stippling, cross-hatching for tonal rendering, pixel art)?
+
+If **yes**: you will need a **target image** to guide mark placement, color selection, and tonal values. Generate or source one NOW using AI image generation or photography — don't wait until Phase 4 to discover that procedural shape-building produces crude results. The target image is like an artist's preparatory study or cartoon — a guide for the final execution, not the artwork itself.
+
+If **no** (the technique is additive/constructive, the marks themselves are the content, or the artwork is abstract): proceed without a target image.
+
+**The test:** If removing the target image would produce significantly worse forms, spatial coherence, or tonal structure — you need the target image. Don't let ego about "pure procedural generation" prevent you from using the right tool.
+
 ### What notebooks DON'T give you
 
 Notebooks prototype techniques in isolation. The thing they cannot teach you is how techniques interact when layered. That's the critical gap, and it's what Phase 4 addresses.
@@ -192,6 +266,8 @@ These become input parameters for Phase 4. But they will need adaptation — the
 
 - [ ] At least one accepted notebook for each major technique in your palette (typically 4–6 notebooks)
 - [ ] Each notebook has been rendered, screenshotted, and verified against the spec
+- [ ] Each notebook has been compared against reference close-ups with 3+ differences documented and all (c) items resolved
+- [ ] If primary technique is a decomposition technique, a target image has been generated/sourced
 - [ ] Extracted key parameters (colors, opacities, blend modes, counts, algorithms) from each accepted notebook
 - [ ] Shown the notebooks to the user and gotten confirmation they look right
 
@@ -467,30 +543,100 @@ const W = 720 * S, H = 960 * S;
 
 Iterate at S=1 (fast, seconds to render). Deliver at S=3 (slow, but 9× more detail).
 
+### When to Use External Tools (AI Image Generation, Photography, Found Imagery)
+
+Not every artwork can be built purely from procedural code. Recognize when external tools will produce a better result — and use them without hesitation.
+
+**Use AI image generation when:**
+- The artwork depicts **recognizable objects or scenes** AND the technique is **decomposition-based** (pointillism, mosaic, halftone, stippling) — you need coherent forms to decompose
+- Procedural shape-building has failed after **2 attempts** — crude ovals and rectangles will never become convincing fruit, faces, or landscapes
+- The artwork needs a **preparatory study** (like an artist's cartoon or underpainting sketch) to guide the final execution
+
+**Don't use AI image generation when:**
+- The artwork is **abstract** — the marks and colors ARE the content
+- The technique is **additive/constructive** — marks build up to create form, they don't decompose a pre-existing image
+- The artwork's quality comes from **process and accident** rather than representational accuracy
+
+**The target image is a guide, not the artwork.** Think of it like a preparatory study — an artist's pencil cartoon beneath a fresco, or a tonal sketch beneath an oil painting. The technique, mark character, color handling, and material physicality are still what make the artwork. The target just ensures the forms are convincing.
+
+**The honest test:** If removing the target image would produce significantly worse forms, use the target. Don't let attachment to "pure procedural generation" degrade the artwork.
+
 ---
 
 ## Phase 5: Iteration
 
 The composition will not be right on the first render. Expect 5–15 iterations. **This phase is not a polish step — it is where the painting actually comes together.** Most of your time should be spent here.
 
-### The spec-verification loop
+### The spec-verification loop (with structured honest self-assessment)
 
-Every single iteration follows this exact sequence:
+Every single iteration follows this exact sequence. **You must explicitly articulate the discrepancy log (below) before writing any code.** This can exist in your reasoning — it doesn't need to be saved to file — but it must be genuinely completed, not skipped.
 
-1. **Render** the canvas at S=1 (fast, a few seconds)
-2. **Screenshot** the rendered output
-3. **Analyze the screenshot against the vision spec.** Go through the spec element by element. For each technique or visual element described in the spec, ask:
-   - Is it visible in the render?
-   - Does it match the described character? (e.g., "barely visible" vs. prominent; "torn edges" vs. clean cuts; "deep darkness" vs. muddy grey)
-   - Does it interact correctly with its neighbors? (e.g., a wash should bloom on raw surface but resist painted areas)
-   - Does the overall color, mood, and spatial structure match the spec?
-   - **Does it look physical?** Could you believe this was made with the real materials described in the spec? Or does it look like a computer made it? Check for the physical qualities specific to the artwork's medium (see the medium table in Phase 4). If anything looks like a Photoshop gradient, a uniform noise filter, or a clean geometric shape that the medium wouldn't produce — it needs more physicality.
-4. **Identify the single worst discrepancy** between the render and the spec — not all problems, just the one that most breaks the painting
-5. **Fix that one thing** in the code
-6. **Render again and re-verify against the spec**
-7. **Repeat until every element in the spec is present and convincing**
+#### Step 1: Render and screenshot
 
-**Do not declare the composition done based on your impression.** Verify against the spec. If the spec describes 6 techniques and you can only identify 4 in the render, there are 2 missing. Find out why and fix them.
+Render the canvas at S=1 (fast, a few seconds). Screenshot the rendered output.
+
+#### Step 2: Cold description (before looking at the spec)
+
+**Before comparing to the spec**, describe what the render actually looks like as if you had never read the spec. Plain, honest language. If it looks like "scattered colored circles on a beige background," say that. If it looks like "a muddy brown rectangle with some lighter smudges," say that. This step prevents you from seeing what you *want* to see instead of what's actually there.
+
+#### Step 3: Five-second test
+
+What is your first honest impression in one sentence? This is the gut check. If the answer is "this looks like confetti" or "this looks like a Photoshop filter," that is the truth. Do not rationalize it away.
+
+#### Step 4: Museum wall test
+
+Imagine this artwork printed at 24×32" and hung on a gallery wall between two works by the reference artists studied in Phase 1 and Phase 2.5. Grade honestly:
+
+- **A**: Could be mistaken for a digitized photograph of a real artwork in this technique
+- **B**: Clearly the right technique, convincing at distance, minor issues up close
+- **C**: Recognizably attempting the technique, but significant execution gaps
+- **D**: Technique not convincingly present — reads as a different technique or generic digital art
+- **F**: Fundamentally wrong approach
+
+**C-or-below trigger:** If you grade C or below, **stop iterating on the current approach.** Incremental parameter tweaks cannot fix a C — the approach itself is wrong. Go back to technique research (Phase 2.5) or rethink the fundamental algorithm. After 3 consecutive iterations still at C or below, **flag to the user** with an honest assessment: "I've attempted 3 iterations and the technique still isn't convincing. Here's what I'm seeing: [cold description]. I think the fundamental issue is [X]. I recommend [specific change in approach]."
+
+#### Step 5: Reference comparison
+
+Compare the render against **2+ reference images** from `references/`. Ask:
+- Does the *technique character* match? If shown to an art student alongside the reference, would they recognize the same technique?
+- What specific features are present in the reference but absent in your render?
+- What features in your render look *wrong* compared to the reference — not just missing, but actively incorrect?
+
+If technique character doesn't match the references, this is the **#1 priority fix** — above any spec compliance issue.
+
+#### Step 6: Spec element-by-element check
+
+Go through the spec element by element. For each technique or visual element described in the spec, ask:
+- Is it visible in the render?
+- Does it match the described character? (e.g., "barely visible" vs. prominent; "torn edges" vs. clean cuts; "deep darkness" vs. muddy grey)
+- Does it interact correctly with its neighbors?
+- Does the overall color, mood, and spatial structure match the spec?
+- **Does it look physical?** Could you believe this was made with the real materials described in the spec?
+
+#### Step 7: Write the discrepancy log
+
+Before writing any code, explicitly articulate this log:
+
+```
+## Iteration N
+Cold Description: [what the render actually looks like, in plain language]
+Five-Second Impression: [one honest sentence]
+Museum Wall Grade: [A/B/C/D/F]
+Reference Comparison: [compared against X and Y — key differences: ...]
+Spec Checklist:
+  - [element 1] | present? Y/N | character match? Y/N | notes
+  - [element 2] | present? Y/N | character match? Y/N | notes
+  - ...
+Single Worst Problem: [one sentence — the thing that most breaks the painting]
+Proposed Fix: [one sentence — the specific code change]
+Reassessment Needed? [Yes if grade C or below, or same problem persists 2+ iterations]
+```
+
+#### Step 8: Fix and repeat
+
+Fix the single worst problem identified in the log. Render again and repeat the entire sequence from Step 1.
+
+**Do not declare the composition done based on your impression.** Verify against the spec AND the references. If the spec describes 6 techniques and you can only identify 4 in the render, there are 2 missing. Find out why and fix them.
 
 ### When the user provides feedback
 
@@ -512,6 +658,9 @@ The user's visual feedback is the highest-priority signal. When the user screens
 | Artwork looks "digital" / too clean | Missing physicality: no surface texture, perfect edges, uniform gradients | Add medium-specific imperfections: surface visibility, imperfect edges, process artifacts |
 | Colors glow instead of feeling like material | Using wrong color model for the medium | Paint: subtractive pigment mix. Print: multiply for overprint. Collage: no mixing. Drawing: darken-only. Match the medium. |
 | **Every artwork looks similar** | **Reusing code architecture, techniques, or palettes from previous projects** | **Start from scratch. Derive layer stack, blend modes, spatial strategy, and color palette entirely from the new spec. Different medium = different code.** |
+| Technique looks nothing like the real thing | Skipped Phase 2.5 research; built from assumption, not observation | Go back to Phase 2.5 — study close-ups of real master works. Your naive assumptions about a technique are usually wrong. |
+| Self-assessed as B+ but user says it's failing | No structured self-assessment; seeing what you want to see | Use the cold description → five-second test → museum wall grade protocol. If you can't honestly describe the render without referencing the spec, you're not being objective. |
+| Crude procedural shapes (fruit that looks like ovals, faces that look like circles) | Trying to build recognizable forms procedurally when a target image should be used | This is a decomposition technique — generate a target image and decompose it into marks. Procedural shape-building cannot produce convincing naturalistic forms. |
 
 ### When to go back to notebooks
 
@@ -571,9 +720,12 @@ After all phases, the project folder looks like this:
 ```
 Artwork-Name/
 ├── artwork_name_vision_spec.md           # Phase 1: the source of truth
-├── references/                            # Phase 1: downloaded inspiration images
-│   ├── rothko_-_no_14.jpg
+├── technique_research.md                  # Phase 2.5: art-historical + computational research
+├── references/                            # Phase 1 + 2.5: inspiration + technique close-ups
+│   ├── rothko_-_no_14.jpg                # overview (Phase 1)
 │   ├── frankenthaler_-_mountains_and_sea.jpg
+│   ├── seurat_-_grande_jatte_-_detail.jpg # close-up (Phase 2.5)
+│   ├── seurat_-_chahut_-_detail.jpg       # close-up (Phase 2.5)
 │   └── ...
 ├── assets/                                # (if needed) real images, textures, found material
 │   ├── newspaper_fragment_01.jpg
@@ -695,6 +847,14 @@ Before considering a composition complete, verify you haven't fallen into these 
 - [ ] **Spatial relationships match the spec** — if the spec says "warmth concentrates left of center into a vertical passage roughly the height of a human torso," verify the warm passage is there, is left of center, and is roughly torso-proportioned
 - [ ] **Hidden details are present** — if the spec describes elements that reward close inspection, screenshot close-ups to verify they're visible at inspection distance
 - [ ] **Overall impression matches the spec's artistic rationale** — step back from the pixel-level and ask: does this painting produce the emotional experience the spec describes?
+
+### Technique fidelity (verify against reference images)
+
+- [ ] **Reference comparison done every iteration** — render was compared against 2+ reference close-ups, not just the spec text
+- [ ] **Technique character matches references** — an art student would recognize the same technique in your render and the reference
+- [ ] **Deep research was completed** — `technique_research.md` exists with art-historical findings and computational approaches documented
+- [ ] **Naive implementation pitfalls avoided** — the 3+ differences between master technique and naive approach (from Phase 2.5) are addressed in the code
+- [ ] **Museum wall grade is B or above** — if C or below, approach was reassessed (not just parameters tweaked)
 
 ### Physicality (the "could this be a photograph of a real artwork?" test)
 

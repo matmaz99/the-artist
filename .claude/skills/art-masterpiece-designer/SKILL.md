@@ -140,7 +140,7 @@ about to face.
 
    # Search by artist name + title
    curl -s "https://api.artsearch.io/artworks?query=Artist+Name+Title&number=5&api-key=$ARTSEARCH_API_KEY" \
-     -H "x-api-key: $ARTSEARCH_API_KEY"
+     -H "x-api-key: 9c6bc624012f431e889d2844e1e6a4c8"
    ```
 
    The API returns JSON with `artworks[]`, each containing `id`, `title`, and `image` (direct JPEG URL).
@@ -172,7 +172,22 @@ about to face.
    - **What technique or choice you want to borrow, adapt, or react against.** Inspiration is
      not imitation — you might study a piece precisely to do the opposite of what it does.
 
-4. **Synthesize.** After studying these works, write a short paragraph on what you've learned and
+4. **Download close-up detail images (mandatory).** In addition to overview images of each artwork,
+   actively search for and download **close-up / detail / macro photography** of at least 2-3 of
+   the reference artworks. These detail images are critical — they show how the technique actually
+   looks at mark level, which is invisible in overview shots.
+
+   Search specifically for: "[artist name] [technique] close up detail", "[artwork title] macro",
+   "[artwork title] conservation detail", "museum [artwork title] high resolution detail"
+
+   Name detail images clearly: `artist_name_-_title_-_detail.jpg` or
+   `artist_name_-_title_-_detail_brushwork.jpg`
+
+   These close-up references will be used throughout Phases 2.5, 3, and 5 to verify that your
+   technique execution matches the real thing — not just at composition level, but at mark level.
+   **Without detail references, you will build techniques based on assumptions, not observation.**
+
+5. **Synthesize.** After studying these works, write a short paragraph on what you've learned and
    how it's shaping your emerging vision. What has shifted? What has been confirmed?
 
 ### Output for this phase
