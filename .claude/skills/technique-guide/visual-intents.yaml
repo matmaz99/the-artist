@@ -1,0 +1,65 @@
+# Visual Intents — "I want it to feel like..."
+# Not technical problems, but artistic desires.
+# Maps feelings/goals to technique combinations.
+
+intents:
+
+  "something organic and alive":
+    start_with: [differential-growth, flow-fields, l-systems]
+    add_for_richness: [noise-density-scatter, alpha-spatter, stroke-hatching]
+    avoid: [grid-layout, apparatus-grid, posterize-quantization]
+    why: "Organic forms come from growth algorithms. Scatter and spatter add natural imperfection."
+
+  "clean geometric precision":
+    start_with: [grid-layout, symmetry-mirroring, truchet-tiles]
+    add_for_richness: [concentric-ring-fill, cosine-gradient-palette, substitution-tiling]
+    avoid: [erode-dilate, alpha-spatter, differential-growth]
+    why: "Grid structure + symmetry. Color via cosine palettes. Keep edges clean."
+
+  "mysterious atmospheric depth":
+    start_with: [layered-composition, domain-warping, fbm-noise]
+    add_for_richness: [gradient-systems, ghost-stroke-doubling, blend-modes]
+    avoid: [grid-layout, posterize-quantization, concentric-ring-fill]
+    why: "Layered transparency + warping creates fog-like depth. Ghost doubling adds mystery."
+
+  "raw, physical, handmade":
+    start_with: [stroke-hatching, erode-dilate, texture-synthesis]
+    add_for_richness: [deckled-edge, alpha-spatter, fat-line-stroke]
+    avoid: [gradient-systems, cosine-gradient-palette, symmetry-mirroring]
+    why: "Hatching + ink bleed + paper texture. Every mark should feel hand-touched."
+
+  "explosive, energetic, dynamic":
+    start_with: [particle-systems, spiral-flow-field, physics-simulation]
+    add_for_richness: [motion-trails, alpha-spatter, warp-displacement]
+    avoid: [grid-layout, apparatus-grid, texture-synthesis]
+    why: "Particles in motion + trails + spatial distortion. Let things fly."
+
+  "quiet, meditative, minimal":
+    start_with: [perlin-simplex-noise, gradient-systems, flow-fields]
+    add_for_richness: [ghost-stroke-doubling, texture-synthesis, deckled-edge]
+    avoid: [alpha-spatter, particle-systems, warp-displacement]
+    why: "Gentle noise gradients, sparse subtle marks. Space and silence."
+
+  "structured but not rigid":
+    start_with: [apparatus-grid, recursive-subdivision, voronoi-tessellation]
+    add_for_richness: [warp-displacement, noise-density-scatter, cosine-gradient-palette]
+    avoid: [differential-growth, alpha-spatter]
+    why: "Start geometric then soften with warping and noise. Structure with organic imperfection."
+
+  "dense, layered, maximal":
+    start_with: [layered-composition, flow-fields, circle-packing]
+    add_for_richness: [blend-modes, stroke-hatching, alpha-spatter, fat-line-stroke]
+    avoid: [posterize-quantization]
+    why: "Fill every area with overlapping marks. Multiple systems on top of each other."
+
+  "cartographic / map-like":
+    start_with: [marching-squares, fbm-noise, voronoi-tessellation]
+    add_for_richness: [line-drawing, posterize-quantization, noise-density-scatter]
+    avoid: [warp-displacement, physics-simulation]
+    why: "Contour lines + regions + scattered symbols. Topographic clarity."
+
+  "botanical / natural growth":
+    start_with: [l-systems, noise-density-scatter, differential-growth]
+    add_for_richness: [flow-fields, cosine-gradient-palette, alpha-spatter]
+    avoid: [grid-layout, apparatus-grid, symmetry-mirroring]
+    why: "Branching + scattering + growth. Color from nature palettes."

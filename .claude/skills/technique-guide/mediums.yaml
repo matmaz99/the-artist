@@ -1,0 +1,230 @@
+# Artistic Medium / Tool Reference
+# Organized by the physical medium the agent wants to simulate.
+# Each medium maps to existing technique .md files in genart-vault/techniques/
+
+mediums:
+
+  fine-pencil:
+    feels_like: "Sharp graphite on smooth paper — thin precise lines, hatching for tone, visible individual strokes"
+    default_paper: bristol-smooth
+    default_framing: bordered-matted
+    core_techniques:
+      - line-drawing
+      - stroke-hatching
+    supporting_techniques:
+      - perlin-simplex-noise
+      - texture-synthesis
+      - ghost-stroke-doubling
+      - stochastic-brush-rendering
+      - pressure-simulation
+    how_they_interact: >
+      Start with line-drawing for individual marks. Build up tone with stroke-hatching
+      (denser = darker). Let texture-synthesis show through as paper grain.
+      Ghost-stroke-doubling adds the imprecision of a real hand.
+      Stochastic-brush-rendering scatters particles for graphite grain.
+      Pressure-simulation gives natural thick-thin variation.
+    explore_nearby:
+      - curve-smoothing
+      - fat-line-stroke
+      - erode-dilate
+
+  gouache-layers:
+    feels_like: "Thick opaque paint built up in visible layers — each layer partially covers the one below, edges are soft but paint is dense"
+    default_paper: cold-press-watercolor
+    default_framing: bordered-matted
+    core_techniques:
+      - layered-composition
+      - blend-modes
+      - fat-line-stroke
+    supporting_techniques:
+      - cosine-gradient-palette
+      - alpha-spatter
+      - posterize-quantization
+      - spectral-pigment-mixing
+    how_they_interact: >
+      Build from back to front with layered-composition. Each layer uses
+      fat-line-stroke for thick brush marks. Blend-modes control how layers
+      mix (multiply for shadows, screen for highlights). Posterize keeps
+      colors flat and matte like real gouache. Spatter at edges.
+    explore_nearby:
+      - stroke-hatching
+      - erode-dilate
+      - texture-synthesis
+
+  watercolor-wash:
+    feels_like: "Transparent washes that bleed and pool — pigment settles at edges, paper shows through everywhere, colors mix where washes overlap"
+    default_paper: cold-press-watercolor
+    default_framing: bordered-matted
+    core_techniques:
+      - flow-fields
+      - blend-modes
+      - gradient-systems
+    supporting_techniques:
+      - domain-warping
+      - erode-dilate
+      - deckled-edge
+      - alpha-spatter
+      - watercolor-polygon-fill
+      - spectral-pigment-mixing
+    how_they_interact: >
+      Flow-fields drive where the wash moves. Gradient-systems create soft
+      color transitions. Blend-modes (multiply) handle where washes overlap.
+      Domain-warping adds the unpredictable wet-on-wet bleeding.
+      Erode-dilate softens all edges. Alpha-spatter simulates granulation.
+      Watercolor-polygon-fill creates organic pooled shapes with edge darkening.
+      Spectral-pigment-mixing ensures overlapping washes mix like real pigment.
+    explore_nearby:
+      - fbm-noise
+      - noise-density-scatter
+      - ghost-stroke-doubling
+
+  spray-paint:
+    feels_like: "Aerosol on a rough surface — cloud of fine dots, dense at center, falloff at edges, overspray everywhere"
+    default_paper: canvas-cotton
+    default_framing: full-bleed
+    core_techniques:
+      - alpha-spatter
+      - particle-systems
+      - circular-spray
+    supporting_techniques:
+      - noise-density-scatter
+      - posterize-quantization
+      - texture-synthesis
+    how_they_interact: >
+      Alpha-spatter for the main spray clouds. Particle-systems for individual
+      dot control. Circular-spray for controlled radial distribution.
+      Posterize for stencil effects (hard mask + soft spray).
+      Texture-synthesis for the surface underneath.
+    explore_nearby:
+      - erode-dilate
+      - motion-trails
+      - blend-modes
+
+  ink-on-paper:
+    feels_like: "Wet ink that bleeds into absorbent paper — marks spread beyond the pen tip, edges feather, dense black pools"
+    default_paper: rice-washi
+    default_framing: bordered-matted
+    core_techniques:
+      - line-drawing
+      - erode-dilate
+    supporting_techniques:
+      - fat-line-stroke
+      - alpha-spatter
+      - deckled-edge
+      - marker-blend-stroke
+      - pressure-simulation
+    how_they_interact: >
+      Draw with line-drawing for fine marks, fat-line-stroke for brush marks.
+      Then erode-dilate to simulate ink bleeding into paper fibers.
+      Alpha-spatter adds accidental drops and splashes.
+      Marker-blend-stroke for bold flat ink marks with color accumulation.
+      Pressure-simulation gives natural pen-tip dynamics.
+    explore_nearby:
+      - ghost-stroke-doubling
+      - posterize-quantization
+      - texture-synthesis
+
+  woven-textile:
+    feels_like: "Thread on fabric — visible weave structure, colors created by thread crossing, geometric but warm"
+    default_paper: canvas-linen
+    default_framing: full-bleed
+    core_techniques:
+      - grid-layout
+      - seigaiha-wave-pattern
+      - texture-synthesis
+    supporting_techniques:
+      - truchet-tiles
+      - symmetry-mirroring
+      - cosine-gradient-palette
+    how_they_interact: >
+      Grid-layout provides the fundamental weave structure. Seigaiha or
+      truchet patterns fill cells with motifs. Texture-synthesis adds
+      fiber-level detail. Symmetry creates the repeat.
+    explore_nearby:
+      - concentric-ring-fill
+      - apparatus-grid
+      - deckled-edge
+
+  etching-printmaking:
+    feels_like: "Metal plate etching — fine cross-hatched lines, ink pushed into grooves, printed with pressure onto damp paper"
+    default_paper: cold-press-watercolor
+    default_framing: deckled-torn
+    core_techniques:
+      - stroke-hatching
+      - line-drawing
+      - erode-dilate
+    supporting_techniques:
+      - posterize-quantization
+      - deckled-edge
+      - texture-synthesis
+    how_they_interact: >
+      Line-drawing and stroke-hatching create the plate marks. Erode-dilate
+      simulates ink spread from printing pressure. Posterize limits tones
+      to what a real press produces. Deckled-edge frames it like handmade paper.
+    explore_nearby:
+      - marching-squares
+      - alpha-spatter
+      - ghost-stroke-doubling
+
+  ceramic-glaze:
+    feels_like: "Glaze on clay — smooth pooling in recesses, thin on edges, crackle texture, speckled minerals"
+    default_framing: floating
+    core_techniques:
+      - domain-warping
+      - gradient-systems
+      - alpha-spatter
+    supporting_techniques:
+      - voronoi-tessellation
+      - erode-dilate
+      - posterize-quantization
+    how_they_interact: >
+      Domain-warping drives where glaze pools (thick) vs thins. Gradient for
+      smooth color transitions in the glaze. Voronoi for crackle. Alpha-spatter
+      for mineral inclusions. Erode-dilate thins edges like real firing.
+    explore_nearby:
+      - fbm-noise
+      - concentric-ring-fill
+      - marching-squares
+
+  charcoal-conte:
+    feels_like: "Soft charcoal or conté crayon — broad gestural marks, smudgeable, builds up in layers from light gray to rich black"
+    default_paper: newsprint
+    default_framing: bordered-matted
+    core_techniques:
+      - fat-line-stroke
+      - stroke-hatching
+      - erode-dilate
+    supporting_techniques:
+      - texture-synthesis
+      - ghost-stroke-doubling
+      - alpha-spatter
+      - stochastic-brush-rendering
+    how_they_interact: >
+      Fat-line-stroke for broad gestural marks. Stroke-hatching builds
+      tone gradually. Erode-dilate blends/smudges areas. Texture-synthesis
+      makes paper grain catch the charcoal. Ghost-doubling = dust halo.
+    explore_nearby:
+      - flow-fields
+      - layered-composition
+      - noise-density-scatter
+
+  oil-impasto:
+    feels_like: "Thick oil paint applied with palette knife — ridges of color, visible texture, paint standing up from the surface"
+    default_paper: canvas-linen
+    default_framing: full-bleed
+    core_techniques:
+      - fat-line-stroke
+      - layered-composition
+      - texture-synthesis
+    supporting_techniques:
+      - blend-modes
+      - cosine-gradient-palette
+      - lighting-shading
+    how_they_interact: >
+      Fat-line-stroke for thick directional marks. Layered-composition builds
+      paint depth. Texture-synthesis creates the surface relief. Lighting-shading
+      catches the ridges of paint. Blend-modes mix wet-into-wet.
+    explore_nearby:
+      - flow-fields
+      - domain-warping
+      - erode-dilate

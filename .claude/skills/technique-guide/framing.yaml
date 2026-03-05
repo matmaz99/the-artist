@@ -1,0 +1,110 @@
+# Framing & Presentation Modes
+# How the artwork sits on its surface — the boundary between painting and paper.
+# Framing is a compositional decision, not decoration.
+
+framing:
+
+  full-bleed:
+    feels_like: "Edge to edge — the painting IS the surface, no border, no margin, total immersion"
+    implementation:
+      mask_type: none
+      edge_treatment: "Painting extends to all edges of the canvas"
+      shader_approach: "No paint-area mask. UV coordinates use full 0-1 range. No margin calculation."
+    pairs_with_mediums: [oil-impasto, spray-paint, woven-textile, gouache-layers]
+    compositional_effect: "The viewer is inside the painting. No frame to separate art from space. Feels monumental even at small sizes. The edges are arbitrary crops, implying the painting continues beyond."
+    art_references:
+      - "Color field painting (Rothko, Newman) — color as environment"
+      - "Abstract Expressionism (Pollock, de Kooning) — all-over composition"
+      - "Street art / murals — art that owns its surface completely"
+
+  bordered-matted:
+    feels_like: "Clean margins around the painting — the classic gallery presentation, painting floating in white (or toned) space"
+    implementation:
+      mask_type: rectangle
+      edge_treatment: "Crisp rectangular boundary with clean hard edge. Paper visible in margins."
+      shader_approach: "Paint area inset by margin percentage (e.g. 6% on all sides). smoothstep at boundary. Paper texture visible in margins. This is Ambiant's current default."
+    pairs_with_mediums: [watercolor-wash, fine-pencil, ink-on-paper, gouache-layers, etching-printmaking]
+    compositional_effect: "Formal, considered, complete. The margin says 'this is a finished work, deliberately bounded.' Paper texture in margins adds material presence. Viewer sees both the painting and its support."
+    art_references:
+      - "Watercolor tradition — always matted with generous margins"
+      - "Print-making — plate mark inside paper edge"
+      - "Diebenkorn's Ocean Park series — geometry acknowledging the rectangle"
+
+  vignette:
+    feels_like: "Gradual dissolve — the painting fades into paper at the edges, no hard boundary"
+    implementation:
+      mask_type: radial_gradient
+      edge_treatment: "Soft falloff from full opacity at center to zero at edges. Gaussian or cosine curve."
+      shader_approach: "Opacity multiplier based on distance from center. Wide transition zone (20-40% of canvas). Paper shows through increasingly at edges."
+    pairs_with_mediums: [watercolor-wash, charcoal-conte, gouache-layers]
+    compositional_effect: "Dreamy, atmospheric, unfixed. The painting has no definite boundary — it breathes into the paper. Focus draws naturally to the center. Feels intimate and unfinished in a poetic way."
+    art_references:
+      - "Turner's late watercolors — forms dissolving into light"
+      - "Chinese scroll painting — empty space as compositional element"
+      - "Photographic vignetting — optical softness at periphery"
+
+  deckled-torn:
+    feels_like: "Organic, torn-paper boundary — the edge is irregular, fibrous, handmade"
+    implementation:
+      mask_type: noise_displaced_rectangle
+      edge_treatment: "Rectangular base shape with noise-driven displacement at edges. Fibers and tears at boundary."
+      shader_approach: "Base rectangle with FBM noise displacing the edge inward/outward. Multi-octave for fiber detail. Connects to existing deckled-edge technique for implementation."
+    pairs_with_mediums: [etching-printmaking, watercolor-wash, ink-on-paper]
+    compositional_effect: "Handmade, artisanal, precious. The torn edge says 'this paper was made by hand' or 'this print was pulled from a plate.' Physical and tactile. Each edge is unique."
+    art_references:
+      - "Handmade paper tradition — every sheet has unique deckled edges"
+      - "Letterpress and etching — plate marks with torn-paper surround"
+      - "Wabi-sabi — beauty in irregularity and imperfection"
+
+  floating:
+    feels_like: "A shape — circle, oval, or organic form — floating on the paper with generous empty space around it"
+    implementation:
+      mask_type: "shaped (circle, ellipse, or SDF-defined organic form)"
+      edge_treatment: "Hard or soft edge depending on shape. Clean for circle/oval, soft for organic."
+      shader_approach: "SDF-based mask centered on canvas. Shape can be circle, ellipse, rounded rectangle, or noise-modulated organic blob. Generous margin (15-25%)."
+    pairs_with_mediums: [ceramic-glaze, watercolor-wash, ink-on-paper]
+    compositional_effect: "The painting becomes an object — a specimen, a world seen through a porthole. The empty paper around it is active negative space. Feels precious, contained, like a cameo or medallion."
+    art_references:
+      - "Tondo paintings (circular canvas) — Renaissance and beyond"
+      - "Japanese enso — circular brushstroke on empty paper"
+      - "Ceramic plates and vessels — painting contained within a form"
+
+  tiled-grid:
+    feels_like: "Multiple small artworks on one sheet — a grid of variations, a specimen collection, a contact sheet"
+    implementation:
+      mask_type: grid
+      edge_treatment: "Each tile has its own border (can be bordered-matted or full-bleed within tile). Gutters between tiles."
+      shader_approach: "Divide canvas into NxM grid. Each tile gets offset UV coordinates and potentially different seed/parameters. Consistent gutter width between tiles."
+    pairs_with_mediums: [etching-printmaking, fine-pencil, watercolor-wash, ink-on-paper]
+    compositional_effect: "Systematic, comparative, scientific. Invites the viewer to compare and find patterns. Feels like a naturalist's notebook or a printer's proof sheet. The grid imposes order on the variations."
+    art_references:
+      - "Warhol's screen prints — repetition with variation"
+      - "Bernd and Hilla Becher — typological grids"
+      - "Botanical illustration plates — specimens arranged in rows"
+
+  taped:
+    feels_like: "Masking tape borders — hard edges where tape was, slight paint bleed underneath, tape residue marks"
+    implementation:
+      mask_type: rectangle_with_bleed
+      edge_treatment: "Hard rectangular edge with slight irregular bleed zone underneath (1-3px). Optional tape-width border strip with different texture."
+      shader_approach: "Sharp rectangular mask with thin noise-displaced bleed zone at edges. Optional: render faint tape-width strips at border with slight color/texture shift to suggest adhesive residue."
+    pairs_with_mediums: [watercolor-wash, spray-paint, gouache-layers]
+    compositional_effect: "Studio process visible. The tape says 'this was made deliberately, with masking and planning.' Slightly more casual than bordered-matted — the process shows. Paint bleeding under tape is a beloved happy accident."
+    art_references:
+      - "Watercolor plein air tradition — tape on board while painting"
+      - "Hard-edge abstraction (Ellsworth Kelly) — clean boundaries from masking"
+      - "Street art stencils — sharp/soft boundary contrast"
+
+  panoramic:
+    feels_like: "Extreme aspect ratio — a wide strip or tall strip on a larger sheet, cinematic or scroll-like"
+    implementation:
+      mask_type: extreme_rectangle
+      edge_treatment: "Same as bordered-matted but with extreme aspect ratio (3:1, 4:1, or taller). Generous paper visible above and below (or left and right)."
+      shader_approach: "Paint area uses extreme aspect ratio rectangle centered on canvas. UV remapped within the strip. Paper fills the remaining space."
+    pairs_with_mediums: [watercolor-wash, ink-on-paper, oil-impasto, charcoal-conte]
+    compositional_effect: "Cinematic sweep or vertical scroll. Wide format suggests landscape, horizon, journey. Tall format suggests falling, growing, ascending. The empty paper above and below creates dramatic negative space."
+    art_references:
+      - "Chinese hand scrolls — horizontal narrative painting"
+      - "Japanese kakemono — vertical hanging scrolls"
+      - "Panoramic landscape photography — wide field of view"
+      - "Monet's Water Lilies (Orangerie) — immersive horizontal sweep"

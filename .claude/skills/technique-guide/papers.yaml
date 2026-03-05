@@ -1,0 +1,137 @@
+# Paper & Support Surface Reference
+# Each paper type affects how marks behave, how color reads, and what mediums work best.
+# The surface is half the artwork — choose it deliberately.
+
+papers:
+
+  hot-press-watercolor:
+    feels_like: "Smooth, hard surface with minimal tooth — paint sits on top, slides easily, details stay crisp"
+    texture_character: "Almost no grain. Washes pool into flat, even fields. Fine lines stay sharp. No granulation."
+    color: "#F5F0E8"
+    best_for_mediums: [fine-pencil, ink-on-paper, watercolor-wash]
+    affects_techniques:
+      flow-fields: "Flow lines stay clean and precise — no texture to break them up"
+      alpha-spatter: "Dots stay perfectly round, no feathering into paper fibers"
+      stroke-hatching: "Lines remain crisp and individual — ideal for controlled hatching"
+      watercolor-polygon-fill: "Washes dry with hard edges, less organic bleeding"
+    compositional_note: "Use when precision matters more than texture. Botanical illustration, architectural studies, controlled washes with hard edges."
+
+  cold-press-watercolor:
+    feels_like: "Medium tooth, slight bumpy texture — the workhorse watercolor paper. Holds paint well, allows both detail and texture"
+    texture_character: "Visible grain catches pigment in valleys. Washes granulate slightly. Dry-brush reveals the tooth. Good balance of control and accident."
+    color: "#F2EDE4"
+    best_for_mediums: [watercolor-wash, gouache-layers, ink-on-paper, charcoal-conte]
+    affects_techniques:
+      flow-fields: "Flow lines pick up subtle texture — feels hand-drawn, not digital"
+      domain-warping: "Warp distortion interacts with paper grain for organic results"
+      erode-dilate: "Edge bleeding feels natural — pigment settles into texture valleys"
+      texture-synthesis: "Paper grain adds a second layer of texture beneath the marks"
+    compositional_note: "The default choice for most painting. Works with almost everything. When in doubt, use cold-press."
+
+  rough-watercolor:
+    feels_like: "Deep valleys and peaks — heavy, dramatic texture that grabs pigment and breaks up every mark"
+    texture_character: "Extreme granulation. Dry-brush skips across peaks leaving valleys white. Washes settle unevenly with beautiful accidents. Fine detail is impossible."
+    color: "#EFE9DF"
+    best_for_mediums: [watercolor-wash, charcoal-conte]
+    affects_techniques:
+      flow-fields: "Flow lines fragment and stutter across the texture — raw, physical feel"
+      alpha-spatter: "Spatter catches on peaks, creating irregular constellations"
+      fat-line-stroke: "Broad strokes break apart at edges, revealing paper underneath"
+      gradient-systems: "Gradients granulate heavily — pigment pools in valleys creating mottled transitions"
+    compositional_note: "Use for expressive, loose work where texture IS the subject. Landscapes, atmospheric studies, anything that benefits from wild granulation."
+
+  bristol-smooth:
+    feels_like: "Ultra-smooth, hard, bright white — zero tooth, almost like drawing on glass"
+    texture_character: "No grain at all. Every mark is exactly what you put down. Ink stays razor-sharp. Pencil glides without catching."
+    color: "#FAFAFA"
+    best_for_mediums: [fine-pencil, ink-on-paper, gouache-layers]
+    affects_techniques:
+      line-drawing: "Lines are pristine and mechanical — perfect for technical work"
+      stroke-hatching: "Each hatch line is distinct with no texture interference"
+      marker-blend-stroke: "Markers glide smoothly, blend zones are clean gradients"
+      posterize-quantization: "Hard tonal steps read clearly on the clean surface"
+    compositional_note: "Use for technical illustration, comic art, precise ink work. The paper disappears — only your marks exist."
+
+  toned-kraft:
+    feels_like: "Mid-tone brown craft paper — warm, humble, everyday. You can work both lighter and darker from the middle value"
+    texture_character: "Medium tooth with visible fibers. Slightly absorbent. The brown tone provides a built-in mid-value so you can add both highlights and shadows."
+    color: "#B8956A"
+    best_for_mediums: [charcoal-conte, gouache-layers, fine-pencil]
+    affects_techniques:
+      stroke-hatching: "White and dark hatching both read clearly against the mid-tone"
+      fat-line-stroke: "Bold marks pop against the warm ground — high contrast available in both directions"
+      lighting-shading: "Natural chiaroscuro — add lights on top instead of building from white"
+      alpha-spatter: "White spatter reads as highlights, dark spatter as texture"
+    compositional_note: "Use when you want to work additively with both light and dark. Portrait studies, figure drawing, warm atmospheric pieces. The paper does half the tonal work for you."
+
+  toned-gray:
+    feels_like: "Neutral mid-gray — cool, objective, balanced. Neither warm nor cool, lets the marks speak"
+    texture_character: "Smooth to medium tooth depending on brand. The neutral gray provides an unbiased mid-value stage for both warm and cool marks."
+    color: "#9E9E9E"
+    best_for_mediums: [charcoal-conte, gouache-layers, fine-pencil]
+    affects_techniques:
+      stroke-hatching: "White and black hatching create full tonal range from neutral base"
+      cosine-gradient-palette: "Color temperature reads clearly against the neutral ground"
+      lighting-shading: "Perfect for studying light — highlights and shadows added equally"
+      blend-modes: "Neutral base means blend modes behave predictably"
+    compositional_note: "Use for color studies where you want to judge temperature accurately. Industrial sketches, value studies, anything where warmth would bias the color perception."
+
+  canvas-linen:
+    feels_like: "Traditional stretched canvas — visible cross-weave of warp and weft threads, slightly rough, paint grips the surface"
+    texture_character: "Strong directional weave pattern. Paint catches on the raised threads. Thick paint builds up on the weave. Thin washes reveal the grid structure underneath. This is the Ambiant installation's default surface."
+    color: "#BEB89E"
+    best_for_mediums: [oil-impasto, gouache-layers, woven-textile]
+    affects_techniques:
+      fat-line-stroke: "Thick strokes ride the weave — paint texture compounds with canvas texture"
+      texture-synthesis: "Canvas weave provides the foundational texture layer"
+      layered-composition: "Each layer interacts with the weave differently — thin layers show it, thick layers bury it"
+      flow-fields: "Flow lines pick up the regular grid rhythm of the weave"
+    compositional_note: "The classic painting surface. Use for anything that should feel like a 'real painting.' The weave adds physical presence and material truth."
+
+  canvas-cotton:
+    feels_like: "Softer canvas — more uniform weave than linen, less pronounced texture, still clearly fabric"
+    texture_character: "Gentler, more regular weave than linen. Less directional bias. Paint grips well but texture is subordinate to the marks. Good compromise between smooth and textured."
+    color: "#C5BFA8"
+    best_for_mediums: [oil-impasto, spray-paint, gouache-layers]
+    affects_techniques:
+      fat-line-stroke: "Strokes show some canvas texture but it doesn't dominate"
+      alpha-spatter: "Spray sits on the surface more evenly than on linen"
+      texture-synthesis: "Subtle background texture that doesn't compete with mark-making"
+      domain-warping: "Warped forms still feel grounded on a physical surface"
+    compositional_note: "Use when you want canvas feel without the strong linen weave pattern. Street art, contemporary painting, mixed media. Less 'old master,' more 'contemporary gallery.'"
+
+  rice-washi:
+    feels_like: "Thin, translucent Japanese paper — absorbent, delicate, with visible long fibers running through it"
+    texture_character: "Extremely absorbent. Ink and paint spread immediately on contact, creating soft feathered edges. Visible plant fibers create organic linear patterns. Layering shows through from beneath."
+    color: "#F0E8D8"
+    best_for_mediums: [ink-on-paper, watercolor-wash]
+    affects_techniques:
+      line-drawing: "Lines bleed outward from the stroke — soft, atmospheric edges"
+      erode-dilate: "Everything erodes — the paper pulls pigment outward naturally"
+      flow-fields: "Flow lines spread and soften, losing precision but gaining warmth"
+      deckled-edge: "Natural fiber edges are already organic — deckled framing feels native"
+    compositional_note: "Use for sumi-e, calligraphy, atmospheric ink work. The paper is an active participant — it transforms every mark. Embrace the loss of control."
+
+  newsprint:
+    feels_like: "Cheap, disposable, slightly yellowed — the paper of quick sketches, newspaper, and ephemera"
+    texture_character: "Soft, absorbent, low-quality. Absorbs ink and charcoal readily. Yellows over time. Bleeds through. Has a democratic, unprecious quality."
+    color: "#E8DCC8"
+    best_for_mediums: [charcoal-conte, ink-on-paper, fine-pencil]
+    affects_techniques:
+      stroke-hatching: "Charcoal grabs well — builds up rich darks quickly"
+      fat-line-stroke: "Bold marks soak in, creating soft velvety blacks"
+      ghost-stroke-doubling: "Ghost marks feel like bleed-through from the other side"
+      alpha-spatter: "Ink drops absorb immediately, creating soft-edged spots"
+    compositional_note: "Use when the work should feel unfinished, spontaneous, disposable. Practice sketches, gesture drawings, punk aesthetic. The paper says 'this was made quickly and honestly.'"
+
+  yupo-synthetic:
+    feels_like: "Slick plastic sheet — paint floats on the surface, never absorbs, can be pushed around forever"
+    texture_character: "Zero absorption. Paint sits on top and can be manipulated indefinitely. Creates wild blooming and marbling effects as paint repels and pools. Lifting and reworking is always possible."
+    color: "#FFFFFF"
+    best_for_mediums: [watercolor-wash, ink-on-paper]
+    affects_techniques:
+      flow-fields: "Paint flows freely with almost no friction — extreme fluidity"
+      domain-warping: "Warping effects are amplified — paint slides and pools dramatically"
+      alpha-spatter: "Drops bead up on the surface instead of absorbing — remain as raised dots"
+      erode-dilate: "Edges stay wet and mobile — constant reworking possible"
+    compositional_note: "Use for experimental, unpredictable work. The surface fights back — paint goes where it wants. Embrace chaos. Abstract expressionism, alcohol ink effects, marbling."
